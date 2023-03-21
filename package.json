@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios": "react-native run-ios --simulator='iPhone 14 Pro'",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "clean": "watchman watch-del-all && rm -rf yarn.lock && rm -rf node_modules && yarn install"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
