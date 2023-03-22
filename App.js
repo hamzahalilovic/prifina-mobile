@@ -27,8 +27,13 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 import MainNavigator from './src/navigation/MainNavigator';
+import Amplify from 'aws-amplify';
+import {withAuthenticator} from 'aws-amplify-react-native';
+import {awsConfig} from './aws-exports-old';
 
 function App() {
+  // Amplify.configure(awsConfig);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -62,3 +67,4 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+// export default withAuthenticator(App);
