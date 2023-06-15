@@ -3,7 +3,7 @@ import 'react-native-get-random-values';
 
 import React, {useEffect, useRef, useState} from 'react';
 
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, TouchableOpacity} from 'react-native';
 
 import {usePrifina} from '@prifina/hooks-v2';
 import {
@@ -23,7 +23,10 @@ import gql from 'graphql-tag';
 import {Auth} from 'aws-amplify';
 
 import config from '../../config';
-import Widget from '../local-sandbox/Widget';
+
+import SharedGroupPreferences from 'react-native-shared-group-preferences';
+
+import {Storage} from 'aws-amplify';
 
 const getAthenaResults = `subscription AthenaResults($id: String!) {
   athenaResults(id: $id) {
@@ -126,7 +129,7 @@ const createClient = async (endpoint, region, userIdPool, idToken) => {
   return Promise.resolve(client);
 };
 
-const Home = () => {
+const DataUpload = () => {
   const [jwtToken, setJwtToken] = useState('');
   const [count, setCount] = useState(1);
 
@@ -229,14 +232,59 @@ const Home = () => {
       //athenaSubscription.current.unsubscribe();
     }
   }, [count]);
+
+  const appGroupId = 'group.com.prifina.ios'; // Replace with your app group identifier
+  const objectKey = 'customData'; // Replace with your key for the object value
+
+  const readObjectFromAppGroup = async () => {
+    try {
+      const jsonString = await SharedGroupPreferences.getItem(
+        objectKey,
+        appGroupId,
+      );
+      //   const jsonObject = JSON.parse(jsonString);
+      const jsonObject = jsonString;
+      console.log('Successfully read object from app group:', jsonObject);
+      return jsonObject;
+    } catch (error) {
+      console.error('Error reading object from app group:', error);
+      return null;
+    }
+  };
+  const uploadObject = async () => {
+    try {
+      const bucket = `prifina-data-${config.prifinaAccountId}-${config.main_region}`; // Replace with your S3 bucket name
+      // Replace with your S3 bucket name
+      const region = config.S3.region; // Replace with your S3 bucket region
+      const endpoint =
+        'https://your-bucket-name.s3.your-bucket-region.amazonaws.com'; // Replace with your S3 bucket endpoint URL
+      const response = await Storage.put('myObjectKey', 'Hello World', {
+        level: 'public',
+        bucket: bucket,
+        region: region,
+        customPrefix: {
+          public: '',
+        },
+        contentType: 'text/plain',
+        endpoint: endpoint,
+      });
+      console.log('Object uploaded successfully:', response);
+    } catch (error) {
+      console.error('Error uploading object:', error);
+    }
+  };
+
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Button title="Get token" onPress={getToken} />
-
+      <Text>Data Upload</Text>
+      <Button title="Sync data" onPress={readObjectFromAppGroup} />
+      <TouchableOpacity onPress={uploadObject}>
+        <Text>Upload Object to S3</Text>
+      </TouchableOpacity>
       {/* {ready && <Widget />} */}
       {/* <Widget /> */}
     </View>
   );
 };
 
-export default Home;
+export default DataUpload;

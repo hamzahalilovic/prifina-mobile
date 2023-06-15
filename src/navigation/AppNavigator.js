@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
+import DataUpload from '../screens/DataUpload';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +18,16 @@ const AppNavigator = () => {
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Icon name="home" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Data Upload"
+        component={DataUpload}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon name="upload" size={size} color={color} />
           ),
         }}
       />

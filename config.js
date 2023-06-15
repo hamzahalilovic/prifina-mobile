@@ -1,9 +1,9 @@
+import Config from 'react-native-config';
+
 export const API_KEY = Config.REACT_APP_API_KEY;
 export const SEARCH_ENGINE = Config.REACT_APP_SEARCH_ENGINE;
 export const GOOGLE_URL = 'https://customsearch.googleapis.com/customsearch/v1';
 export const REFRESH_TOKEN_EXPIRY = Config.REACT_APP_REFRESH_TOKEN_EXPIRY;
-
-import Config from 'react-native-config';
 
 const prod = {
   STAGE: Config.REACT_APP_STAGE,
