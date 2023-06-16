@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {View, TextInput, Button, StyleSheet} from 'react-native';
 import {API, Auth} from 'aws-amplify';
 
-import {getLoginUserIdentityPoolQuery} from '../utils/graphql/api';
+import {getLoginUserIdentityPoolQuery} from '../../utils/graphql/api';
 
 import Config from 'react-native-config';
 
-import config from '../../config';
-import awsmobile from '../aws-exports';
+import config from '../../../config';
+import awsmobile from '../../aws-exports';
 
 const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');

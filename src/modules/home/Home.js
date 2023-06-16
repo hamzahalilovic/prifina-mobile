@@ -22,8 +22,8 @@ import gql from 'graphql-tag';
 
 import {Auth} from 'aws-amplify';
 
-import config from '../../config';
-import Widget from '../local-sandbox/Widget';
+import config from '../../../config';
+import Widget from '../../local-sandbox/Widget';
 
 const getAthenaResults = `subscription AthenaResults($id: String!) {
   athenaResults(id: $id) {

@@ -3,9 +3,10 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-import Home from '../screens/Home';
-import Profile from '../screens/Profile';
-import DataUpload from '../screens/DataUpload';
+import Home from '../modules/home/Home';
+import Profile from '../modules/profile/Profile';
+
+import DataHubNavigator from '../modules/datahub/DataHubNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,11 +24,11 @@ const AppNavigator = () => {
       />
 
       <Tab.Screen
-        name="Data Upload"
-        component={DataUpload}
+        name="Data Hub"
+        component={DataHubNavigator}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Icon name="upload" size={size} color={color} />
+            <Icon name="database" size={size} color={color} />
           ),
         }}
       />

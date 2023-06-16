@@ -7,20 +7,20 @@ import AppNavigator from './AppNavigator';
 import AuthNavigator from './AuthNavigator';
 
 const MainNavigator = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
+  // useEffect(() => {
+  //   checkAuth();
+  // }, []);
 
-  async function checkAuth() {
-    try {
-      await Auth.currentAuthenticatedUser();
-      setIsLoggedIn(true);
-    } catch (err) {
-      setIsLoggedIn(false);
-    }
-  }
+  // async function checkAuth() {
+  //   try {
+  //     await Auth.currentAuthenticatedUser();
+  //     setIsLoggedIn(true);
+  //   } catch (err) {
+  //     setIsLoggedIn(false);
+  //   }
+  // }
   const user = false;
 
   return (

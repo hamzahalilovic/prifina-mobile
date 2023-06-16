@@ -10,7 +10,7 @@ import {
   listAppMarketQuery,
   updateUserActivityMutation,
   getSystemNotificationCountQuery,
-} from '../utils/graphql/api';
+} from '../../utils/graphql/api';
 
 import {usePrifina} from '@prifina/hooks-v2';
 
@@ -180,9 +180,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-
-//code the same Profile screen but add generic profile screen options like in ios app
-
-
-
