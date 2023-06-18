@@ -1,37 +1,63 @@
 import React from 'react';
-import {View, Button} from 'react-native';
-import * as Contacts from 'react-native-contacts';
-import * as Permissions from 'react-native-permissions';
+import {View, Button, Alert, Platform} from 'react-native';
+import {request, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import Contacts from 'react-native-contacts';
 
 const ImportScreen = () => {
-  const requestContactsPermission = async () => {
+  const requestPermission = async permission => {
     try {
-      const response = await Permissions.request('contacts');
+      const result = await request(permission);
 
-      if (response === 'granted') {
-        getContacts();
+      if (result === RESULTS.GRANTED) {
+        console.log('Permission granted');
+        if (permission === PERMISSIONS.IOS.PHOTO_LIBRARY) {
+          importPhotos();
+        } else if (permission === PERMISSIONS.IOS.CONTACTS) {
+          importContacts();
+        }
       } else {
-        console.log('Contacts permission denied');
+        console.log('Permission denied');
+        Alert.alert(
+          'Permission Denied',
+          'Please grant permission to access your ' +
+            (permission === PERMISSIONS.IOS.PHOTO_LIBRARY
+              ? 'photo library'
+              : 'contacts') +
+            '.',
+          [{text: 'OK', onPress: () => console.log('OK pressed')}],
+        );
       }
     } catch (error) {
-      console.error('Error requesting contacts permission:', error);
+      console.log('Error requesting permission:', error);
     }
   };
 
-  const getContacts = () => {
-    Contacts.getAll((err, contacts) => {
-      if (err) {
-        console.error('Error retrieving contacts:', err);
-      } else {
+  const importPhotos = () => {
+    // Perform import logic for photos here
+    console.log('Importing photos...');
+  };
+
+  const importContacts = () => {
+    console.log('Importing contacts...');
+
+    Contacts.getAll()
+      .then(contacts => {
+        // work with contacts
         console.log('Contacts:', contacts);
-        // Process contacts data as per your requirement
-      }
-    });
+      })
+      .catch(e => {});
   };
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Button title="Import Data" onPress={requestContactsPermission} />
+      <Button
+        title="Import Photos"
+        onPress={() => requestPermission(PERMISSIONS.IOS.PHOTO_LIBRARY)}
+      />
+      <Button
+        title="Import Contacts"
+        onPress={() => requestPermission(PERMISSIONS.IOS.CONTACTS)}
+      />
     </View>
   );
 };
