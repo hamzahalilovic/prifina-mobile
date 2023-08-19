@@ -14,6 +14,7 @@
 		468771F3CC6384AF20B6E27B /* libPods-prifina-prifinaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2E09FCC667A799B6FB47FE8 /* libPods-prifina-prifinaTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8756A8FE5D29CF28BF63D461 /* libPods-prifina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F611DFF704576189CF047DEC /* libPods-prifina.a */; };
+		BB0312FE2A432C5E00AD86AC /* AppGroupModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0312FD2A432C5E00AD86AC /* AppGroupModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		51174C99F77C5FF0C24B1B1E /* Pods-prifina-prifinaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prifina-prifinaTests.debug.xcconfig"; path = "Target Support Files/Pods-prifina-prifinaTests/Pods-prifina-prifinaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = prifina/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C12C5E6662E176FD732D6E /* Pods-prifina-prifinaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prifina-prifinaTests.release.xcconfig"; path = "Target Support Files/Pods-prifina-prifinaTests/Pods-prifina-prifinaTests.release.xcconfig"; sourceTree = "<group>"; };
+		BB0312FD2A432C5E00AD86AC /* AppGroupModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupModule.swift; sourceTree = "<group>"; };
+		BB0312FF2A432D3400AD86AC /* prifina-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "prifina-Bridging-Header.h"; sourceTree = "<group>"; };
 		BB33288A29C933A300D16348 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		BB33288B29C933A300D16348 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		BB33288C29C933A300D16348 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				BB0312FD2A432C5E00AD86AC /* AppGroupModule.swift */,
+				BB0312FF2A432D3400AD86AC /* prifina-Bridging-Header.h */,
 			);
 			name = prifina;
 			sourceTree = "<group>";
@@ -250,7 +255,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -457,6 +462,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				BB0312FE2A432C5E00AD86AC /* AppGroupModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +555,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prifina.reactjs;
 				PRODUCT_NAME = prifina;
+				SWIFT_OBJC_BRIDGING_HEADER = "prifina-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -579,6 +586,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prifina.reactjs;
 				PRODUCT_NAME = prifina;
+				SWIFT_OBJC_BRIDGING_HEADER = "prifina-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
